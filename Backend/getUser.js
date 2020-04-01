@@ -6,15 +6,17 @@ AWS.config.update({
 });
 
 exports.handler = async (event, context) => {
-    const documentClient = new AWS.DynamoDB.DocumentClient({region: "us-east-1"});
+    const documentClient = new AWS.DynamoDB.DocumentClient({
+        region: "us-east-1"
+    });
     let responseBody = "";
     let statusCode = 0;
-    
+
     const params = {
         TableName: "Auth",
         "ProjectionExpression": "username, password", // SELECT username, password
         Key: {
-            "id": Number(event.pathParameters.id)   // WHERE id = path.id
+            "username": Number(event.pathParameters.username) // WHERE id = path.id
         }
     };
 
@@ -28,11 +30,11 @@ exports.handler = async (event, context) => {
     }
 
     const response = {
-        statusCode : statusCode,
-        headers : {
-            "Content-Type" : "application/json"
+        statusCode: statusCode,
+        headers: {
+            "Content-Type": "application/json"
         },
-        body : responseBody
+        body: responseBody
     };
 
     return response;

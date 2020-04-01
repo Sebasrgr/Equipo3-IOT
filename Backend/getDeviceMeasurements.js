@@ -12,9 +12,9 @@ exports.handler = async (event, context) => {
     
     const params = {
         TableName: "Measurement",
-        "ProjectionExpression": "humidity, temperature, lumens, date_timestamp", // SELECT
+        "ProjectionExpression": "deviceid, timestamp, payload", // SELECT
         Key: {
-            "device_id": event.pathParameters.id   // WHERE device_id = path.id
+            "deviceid": event.pathParameters.id   // WHERE device_id = path.id
         }
     };
 

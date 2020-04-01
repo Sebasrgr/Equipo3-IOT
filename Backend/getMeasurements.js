@@ -6,31 +6,34 @@ AWS.config.update({
 });
 
 exports.handler = async (event, context) => {
-    const documentClient = new AWS.DynamoDB.DocumentClient({region: "us-east-1"});
+    const documentClient = new AWS.DynamoDB.DocumentClient({
+        region: "us-east-1"
+    });
     let responseBody = "";
     let statusCode = 0;
 
     const params = {
         TableName: "Measurement",
-        "ProjectionExpression": "device_id, humidity, temperature, lumens, date_timestamp",
+        "ProjectionExpression": "deviceid, payload",
     };
 
     try {
         const data = await documentClient.scan(params).promise();
         statusCode = 200;
-        responseBody = JSON.stringify(data.Items);
+        responseBody = data.Items;
     } catch (err) {
         statusCode = 404;
         responseBody = `No se encontró la información: ${err}`;
     }
 
     const response = {
-        statusCode : statusCode,
-        headers : {
-            "Content-Type" : "application/json"
+        statusCode: statusCode,
+        headers: {
+            "Content-Type": "application/json"
         },
-        body : responseBody
+        body: responseBody
     };
 
     return response;
 }
+X
