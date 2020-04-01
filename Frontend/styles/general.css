@@ -1,0 +1,60 @@
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: "Raleway", sans-serif
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    margin-bottom:20px; 
+}
+
+.w3-green {
+    background-color: #81E979;
+}
+
+.w3-light-green {
+    background-color: #B0FE76;
+    color: white !important;
+}
+
+.w3-bluish-green {
+    background-color: #8FBB99;
+    color: white !important;
+}
+
+.w3-black {
+    background-color: #363635 !important;
+}
+
+.w3-brown {
+    background-color: #595A4A;
+}
+
+a {
+    text-decoration: none;
+}
+
+div.content-wrapper {
+    min-height: calc(100vh - 320px);
+    margin-bottom: 20px;
+}
+
+
+#chartContainer canvas {
+    max-width: calc(50%);
+    margin: 20px 0;
+}
+
+@media screen and (max-width: 768px) {
+    #chartContainer canvas {
+        max-width: 100% !important;
+    }
+}
