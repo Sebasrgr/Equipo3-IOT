@@ -3,7 +3,8 @@ function login(username, password) {
         method: 'POST',
         url: "https://h5d6r9s3l8.execute-api.us-east-1.amazonaws.com/beta/login",
         data: {
-            username: 
+            username: username,
+            password: password
         },
         success: function(token) {
             // Do something
