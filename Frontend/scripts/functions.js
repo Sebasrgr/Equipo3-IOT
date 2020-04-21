@@ -22,7 +22,7 @@ function verify(token) {
         method: 'POST',
         url: "https://h5d6r9s3l8.execute-api.us-east-1.amazonaws.com/beta/login/verify",
         data: {
-            username: 
+            token: token 
         },
         success: function(token) {
             // Do something if false
