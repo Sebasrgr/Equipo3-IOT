@@ -9,19 +9,21 @@ exports.handler = async (event, context) => {
     const documentClient = new AWS.DynamoDB.DocumentClient({region: "us-east-1"});
     let responseBody = "";
     let statusCode = 0;
+
     
     const params = {
         TableName: "Measurement",
-        "ProjectionExpression": "deviceid, timestamp, payload", // SELECT
-        Key: {
-            "deviceid": event.pathParameters.id   // WHERE device_id = path.id
+        ProjectionExpression: "deviceid, payload", // SELECT
+        KeyConditionExpression: "deviceid = :a",
+        ExpressionAttributeValues: {
+            ":a": event.pathParameters.id
         }
     };
 
     try {
-        const data = await documentClient.get(params).promise();
+        const data = await documentClient.query(params).promise();
         statusCode = 200;
-        responseBody = JSON.stringify(data);
+        responseBody = JSON.stringify(data.Items);
     } catch (err) {
         statusCode = 404;
         responseBody = `No se encontraron las mediciones de ese dispositivo: ${err}`;

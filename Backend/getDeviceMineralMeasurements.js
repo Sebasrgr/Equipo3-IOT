@@ -10,27 +10,32 @@ exports.handler = async (event, context) => {
     let responseBody = "";
     let statusCode = 0;
 
+    
     const params = {
-        TableName: "Measurement",
-        "ProjectionExpression": "deviceid, payload",
+        TableName: "MineralMeasurement",
+        ProjectionExpression: "deviceid, payload", // SELECT
+        KeyConditionExpression: "deviceid = :a",
+        ExpressionAttributeValues: {
+            ":a": event.pathParameters.id
+        }
     };
 
     try {
-        const data = await documentClient.scan(params).promise();
+        const data = await documentClient.query(params).promise();
         statusCode = 200;
-        responseBody = data.Items;
+        responseBody = JSON.stringify(data.Items);
     } catch (err) {
         statusCode = 404;
-        responseBody = `No se encontró la información: ${err}`;
+        responseBody = `No se encontraron las mediciones de ese dispositivo: ${err}`;
     }
 
-    const response = responseBody; /*{
+    const response = {
         statusCode : statusCode,
         headers : {
             "Content-Type" : "application/json"
         },
         body : responseBody
-    };*/
+    };
 
     return response;
 }

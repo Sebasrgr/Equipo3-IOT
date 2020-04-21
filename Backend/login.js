@@ -51,7 +51,7 @@ exports.handler = async (event, context) => {
     } catch (err) {
         statusCode = 500;
         responseBody = JSON.stringify({
-            "error": `Error en sistema: ${err}`
+            "error": `El usuario no existe`
         });
     }
 
