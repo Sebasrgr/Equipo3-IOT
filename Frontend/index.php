@@ -49,11 +49,13 @@
             <div class="w3-row w3-section">
                 <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-lock"></i></div>
                 <div class="w3-rest">
-                    <input class="w3-input w3-border" name="password" type="password" placeholder="Contraseña" id="passLog">
+                    <input class="w3-input w3-border" name="password" type="password" placeholder="Contraseña"
+                        id="passLog">
                 </div>
             </div>
 
-            <input type="submit" class="w3-button w3-block w3-section w3-green w3-ripple w3-padding" value="Iniciar Sesión">
+            <input type="submit" class="w3-button w3-block w3-section w3-green w3-ripple w3-padding"
+                value="Iniciar Sesión">
         </form>
 
         <div class="w3-container w3-center">
