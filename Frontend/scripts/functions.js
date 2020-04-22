@@ -10,16 +10,17 @@ function login() {
         }),
         success: function (token) {
             // Do something
-            document.cookie = `token=${token['access_token']};`;
+            sessionStorage.setItem("token",token['access_token']);
             window.location = '../dashboard.html';
         },
         error: function (error) {
-            alert("ERROR al iniciar sesión. Intente nuevamente" + JSON.stringify(error));
+            alert("Las credenciales no son válidas.");
         }
     });
 }
 
 function verify(token) {
+    token = sessionStorage.getItem("token");
     $.ajax({
         method: 'POST',
         url: "https://h5d6r9s3l8.execute-api.us-east-1.amazonaws.com/beta/login/verify",
@@ -30,15 +31,14 @@ function verify(token) {
             // Token still OK
         },
         error: function (error) {
-            document.cookie = `token=`;
-            window.location = '../index.html';
             alert("La sesión ha expirado.");
+            logout();
         }
     });
 }
 
-function logout(token) {
-    document.cookie = `token=`;
+function logout() {
+    sessionStorage.removeItem("token");
     window.location = '../index.html';
 }
 
