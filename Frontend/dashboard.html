@@ -15,9 +15,11 @@
 
     
     <script>
-        window.onload = function(){
+        window.addEventListener("load",function(){
+            let token = document.cookie.split("=")[1]
+            verify(token)
             loadAverages();
-        }
+        })
     </script>
 
 </head>

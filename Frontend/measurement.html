@@ -14,6 +14,12 @@
     <script src="./scripts/charts.js"></script>
     <script src="./scripts/functions.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <script>
+        window.addEventListener("load",function() {
+            let token = document.cookie.split("=")[1];
+            verify(token);
+        });
+    </script>
 </head>
 
 <body class="w3-light-grey">
@@ -70,25 +76,25 @@
                     <div class="w3-quarter">
                         <p>Temperatura promedio</p>
                         <div class="w3-grey">
-                            <div class="w3-container w3-center w3-padding w3-green">20 °C</div>
+                            <div class="w3-container w3-center w3-padding w3-green" id="avgTemp">20 °C</div>
                         </div>
                     </div>
                     <div class="w3-quarter">
                         <p>Humedad promedio</p>
                         <div class="w3-grey">
-                            <div class="w3-container w3-center w3-padding w3-light-green">75%</div>
+                            <div class="w3-container w3-center w3-padding w3-light-green" id="avgHum">75%</div>
                         </div>
                     </div>
                     <div class="w3-quarter">
                         <p>Conductividad promedio</p>
                         <div class="w3-grey">
-                            <div class="w3-container w3-center w3-padding w3-bluish-green">0.2 S/cm</div>
+                            <div class="w3-container w3-center w3-padding w3-bluish-green" id="avgCond">0.2 S/cm</div>
                         </div>
                     </div>
                     <div class="w3-quarter">
                         <p>Iluminación promedio</p>
                         <div class="w3-grey">
-                            <div class="w3-container w3-center w3-padding w3-brown">50 LUX</div>
+                            <div class="w3-container w3-center w3-padding w3-brown" id="avgLUX">50 LUX</div>
                         </div>
                     </div>
                 </div>
@@ -97,25 +103,25 @@
                     <div class="w3-quarter">
                         <p>Potasio promedio</p>
                         <div class="w3-grey">
-                            <div class="w3-container w3-center w3-padding w3-green">20 mg/l</div>
+                            <div class="w3-container w3-center w3-padding w3-green" id="avgPot">20 mg/l</div>
                         </div>
                     </div>
                     <div class="w3-quarter">
                         <p>Sodio promedio</p>
                         <div class="w3-grey">
-                            <div class="w3-container w3-center w3-padding w3-light-green">15 mg/l</div>
+                            <div class="w3-container w3-center w3-padding w3-light-green" id="avgSod">15 mg/l</div>
                         </div>
                     </div>
                     <div class="w3-quarter">
                         <p>Calcio promedio</p>
                         <div class="w3-grey">
-                            <div class="w3-container w3-center w3-padding w3-bluish-green">10 mg/l</div>
+                            <div class="w3-container w3-center w3-padding w3-bluish-green" id="avgCal">10 mg/l</div>
                         </div>
                     </div>
                     <div class="w3-quarter">
                         <p>Nitratos promedio</p>
                         <div class="w3-grey">
-                            <div class="w3-container w3-center w3-padding w3-brown">50 mg/l</div>
+                            <div class="w3-container w3-center w3-padding w3-brown" id="avgNitr">50 mg/l</div>
                         </div>
                     </div>
                 </div>

@@ -13,6 +13,13 @@
     <script src="./scripts/functions.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
 
+    <script>
+        window.addEventListener("load",function(){
+            let token = document.cookie.split("=")[1];
+            verify(token);
+        })
+    </script>
+
 </head>
 
 <body class="w3-light-grey">
