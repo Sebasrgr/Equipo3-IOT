@@ -99,13 +99,13 @@ function manualMineral() {
     $.ajax({
         method: 'POST',
         url: "https://h5d6r9s3l8.execute-api.us-east-1.amazonaws.com/beta/minerals",
-        data: manualInfo,
+        data: JSON.stringify(manualInfo),
         success: function (token) {
             // Do something
-            alert("Guardado")
+            alert("Guardado");
         },
         error: function (error) {
-            alert("Error en guardado, intente nuevamente")
+            alert("Error en guardado, intente nuevamente"+ JSON.stringify(error));
         }
 
     })
@@ -120,14 +120,14 @@ function register() {
 
     $.ajax({
         method: 'POST',
-        url: "https://h5d6r9s3l8.execute-api.us-east-1.amazonaws.com/beta/login",
-        data: {
+        url: "https://h5d6r9s3l8.execute-api.us-east-1.amazonaws.com/beta/register",
+        data: JSON.stringify({
             username: usuarioR,
             password: contraseñaR,
             email: emailR,
             phone: phoneR,
             name: nameR
-        },
+        }),
         success: function (token) {
             // Do something
             alert("Usuario registrado correctamente, favor de iniciar sesión")

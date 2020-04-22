@@ -6,7 +6,9 @@ AWS.config.update({
 });
 
 exports.handler = async (event, context) => {
-    const documentClient = new AWS.DynamoDB.DocumentClient({region: "us-east-1"});
+    const documentClient = new AWS.DynamoDB.DocumentClient({
+        region: "us-east-1"
+    });
     let responseBody = "";
     let statusCode = 0;
 
@@ -24,13 +26,14 @@ exports.handler = async (event, context) => {
         responseBody = `No se encontró la información: ${err}`;
     }
 
-    const response = responseBody; /*{
-        statusCode : statusCode,
-        headers : {
-            "Content-Type" : "application/json"
+    const response = {
+        statusCode: statusCode,
+        headers: {
+            "Access-Control-Allow-Origin" : "*",
+            "Content-Type": "application/json"
         },
-        body : responseBody
-    };*/
+        body: JSON.stringify(responseBody)
+    };
 
     return response;
 }

@@ -67,15 +67,16 @@ function createChart(canvas, title, data) {
 function loadData() {
     $.ajax({
         url: "https://h5d6r9s3l8.execute-api.us-east-1.amazonaws.com/beta/measurement",
+        async: false,
         success: function (result) {
             // Do something
             let averageTemp, averageHum, averageCond, averageIllum;
             let countTemp = 0, countHum = 0, countCond = 0, countIllum = 0;
             for (let index = 0; index < result.length; ++index) {
-                countTemp += result[index]['payload']['temperature'];
-                countHum += result[index]['payload']['humidity'];
-                countCond += result[index]['payload']['conductivity'];
-                countIllum += result[index]['payload']['LUX'];
+                countTemp += Number(result[index]['payload']['temperature']);
+                countHum += Number(result[index]['payload']['humidity']);
+                countCond += Number(result[index]['payload']['conductivity']);
+                countIllum += Number(result[index]['payload']['LUX']);
                 dataTemp.push(result[index]['payload']['temperature']);
                 dataHum.push(result[index]['payload']['humidity']);
                 dataCon.push(result[index]['payload']['conductivity']);
@@ -102,15 +103,16 @@ function loadData() {
 function loadMinerals() {
     $.ajax({
         url: "https://h5d6r9s3l8.execute-api.us-east-1.amazonaws.com/beta/minerals",
+        async: false,
         success: function (result) {
             // Do something
             let averagePot, averageSod, averageCal, averageNitr;
             let countPot = 0, countSod = 0, countCal = 0, countNitr = 0;
             for (let index = 0; index < result.length; ++index) {
-                countPot += result[index]['payload']['potassium'];
-                countSod += result[index]['payload']['sodium'];
-                countCal += result[index]['payload']['calcium'];
-                countNitr += result[index]['payload']['nitrates'];
+                countPot += Number(result[index]['payload']['potassium']);
+                countSod += Number(result[index]['payload']['sodium']);
+                countCal += Number(result[index]['payload']['calcium']);
+                countNitr += Number(result[index]['payload']['nitrates']);
                 dataPot.push(result[index]['payload']['potassium']);
                 dataSod.push(result[index]['payload']['sodium']);
                 dataCal.push(result[index]['payload']['calcium']);
