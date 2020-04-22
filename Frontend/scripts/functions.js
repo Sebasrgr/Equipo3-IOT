@@ -4,17 +4,17 @@ function login() {
     $.ajax({
         method: 'POST',
         url: "https://h5d6r9s3l8.execute-api.us-east-1.amazonaws.com/beta/login",
-        data: {
+        data: JSON.stringify({
             username: usuario,
             password: contraseña
-        },
+        }),
         success: function (token) {
             // Do something
-            document.cookie = `token=${token};`;
-            window.location('../dashboard.html');
+            document.cookie = `token=${token['access_token']};`;
+            window.location = '../dashboard.html';
         },
         error: function (error) {
-            alert("ERROR al iniciar sesión. Intente nuevamente");
+            alert("ERROR al iniciar sesión. Intente nuevamente" + JSON.stringify(error));
         }
     });
 }
@@ -23,20 +23,23 @@ function verify(token) {
     $.ajax({
         method: 'POST',
         url: "https://h5d6r9s3l8.execute-api.us-east-1.amazonaws.com/beta/login/verify",
-        data: {
+        data: JSON.stringify({
             token: token
-        },
+        }),
         success: function (token) {
-            // Do something if false
-            if (token['validation'] == false) {
-                document.cookie = `token=`;
-                window.location('../index.html');
-            }
+            // Token still OK
         },
         error: function (error) {
-            console.log("ERROR:" + JSON.stringify(error));
+            document.cookie = `token=`;
+            window.location = '../index.html';
+            alert("La sesión ha expirado.");
         }
     });
+}
+
+function logout(token) {
+    document.cookie = `token=`;
+    window.location = '../index.html';
 }
 
 
@@ -46,7 +49,10 @@ function loadAverages() {
         success: function (result) {
             // Do something
             let averageTemp, averageHum, averageCond, averageIllum;
-            let countTemp = 0, countHum = 0, countCond = 0, countIllum = 0;
+            let countTemp = 0,
+                countHum = 0,
+                countCond = 0,
+                countIllum = 0;
             for (let index = 0; index < result.length; ++index) {
                 countTemp += result[index]['payload']['temperature'];
                 countHum += result[index]['payload']['humidity'];
@@ -86,13 +92,14 @@ function manualMineral() {
             nitrates: manualNitr,
             potassium: manualPotassium,
             sodium: manualSodium
-        }, date: manualDates
+        },
+        date: manualDates
     }
 
     $.ajax({
-        method: 'POST', 
+        method: 'POST',
         url: "https://h5d6r9s3l8.execute-api.us-east-1.amazonaws.com/beta/minerals",
-        data:manualInfo,
+        data: manualInfo,
         success: function (token) {
             // Do something
             alert("Guardado")
@@ -100,7 +107,7 @@ function manualMineral() {
         error: function (error) {
             alert("Error en guardado, intente nuevamente")
         }
-        
+
     })
 }
 
