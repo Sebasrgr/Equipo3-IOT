@@ -67,7 +67,7 @@ function loadAverages() {
             // Display elements
             document.getElementById('avgTemp').innerHTML = averageTemp.toFixed(2) + " °C";
             document.getElementById('avgHum').innerHTML = averageHum.toFixed(2) + "%";
-            document.getElementById('avgCond').innerHTML = averageCond.toFixed(2) + " S/cm";
+            document.getElementById('avgCond').innerHTML = averageCond.toFixed(2) + " mS/cm";
             document.getElementById('avgLUX').innerHTML = averageIllum.toFixed(2) + " LUX";
             document.getElementById('measurementsCount').innerHTML = result.length;
         },
