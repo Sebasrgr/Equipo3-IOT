@@ -99,27 +99,27 @@ exports.handler = async (event, context) => {
         }
 
         if (pot < minMaxData.Items[4]["min"]) {
-            resultObject["potassium"] = `La concentración de potasio en la tierra es menor a la esperada. Proporcione mayor cantidad para alcanzar el mínimo de ${minMaxData.Items[4]["min"]} kg/ha.`
+            resultObject["potassium"] = `La concentración de potasio en la tierra es menor a la esperada. Proporcione mayor cantidad para alcanzar el mínimo de ${minMaxData.Items[4]["min"]} ppm.`
         } else if (pot > minMaxData.Items[4]["max"]) {
-            resultObject["potassium"] = `La concentración de potasio en la tierra es mayor a la esperada. Proporcione menor cantidad para alcanzar un máximo de ${minMaxData.Items[4]["max"]} kg/ha.`
+            resultObject["potassium"] = `La concentración de potasio en la tierra es mayor a la esperada. Proporcione menor cantidad para alcanzar un máximo de ${minMaxData.Items[4]["max"]} ppm.`
         }
 
         if (cal < minMaxData.Items[5]["min"]) {
-            resultObject["calcium"] = `La concentración de potasio en la tierra es menor a la esperada. Proporcione mayor cantidad para alcanzar el mínimo de ${minMaxData.Items[5]["min"]} kg/ha.`
+            resultObject["calcium"] = `La concentración de potasio en la tierra es menor a la esperada. Proporcione mayor cantidad para alcanzar el mínimo de ${minMaxData.Items[5]["min"]} ppm.`
         } else if (cal > minMaxData.Items[5]["max"]) {
-            resultObject["calcium"] = `La concentración de potasio en la tierra es mayor a la esperada. Proporcione menor cantidad para alcanzar un máximo de ${minMaxData.Items[5]["max"]} kg/ha.`
+            resultObject["calcium"] = `La concentración de potasio en la tierra es mayor a la esperada. Proporcione menor cantidad para alcanzar un máximo de ${minMaxData.Items[5]["max"]} ppm.`
         }
 
         if (sod < minMaxData.Items[6]["min"]) {
-            resultObject["sodium"] = `La concentración de potasio en la tierra es menor a la esperada. Proporcione mayor cantidad para alcanzar el mínimo de ${minMaxData.Items[6]["min"]} kg/ha.`
+            resultObject["sodium"] = `La concentración de potasio en la tierra es menor a la esperada. Proporcione mayor cantidad para alcanzar el mínimo de ${minMaxData.Items[6]["min"]} ppm.`
         } else if (sod > minMaxData.Items[6]["max"]) {
-            resultObject["sodium"] = `La concentración de potasio en la tierra es mayor a la esperada. Proporcione menor cantidad para alcanzar un máximo de ${minMaxData.Items[6]["max"]} kg/ha.`
+            resultObject["sodium"] = `La concentración de potasio en la tierra es mayor a la esperada. Proporcione menor cantidad para alcanzar un máximo de ${minMaxData.Items[6]["max"]} ppm.`
         }
 
         if (nit < minMaxData.Items[7]["min"]) {
-            resultObject["nitrates"] = `La concentración de potasio en la tierra es menor a la esperada. Proporcione mayor cantidad para alcanzar el mínimo de ${minMaxData.Items[7]["min"]} kg/ha.`
+            resultObject["nitrates"] = `La concentración de potasio en la tierra es menor a la esperada. Proporcione mayor cantidad para alcanzar el mínimo de ${minMaxData.Items[7]["min"]} ppm.`
         } else if (nit > minMaxData.Items[7]["max"]) {
-            resultObject["nitrates"] = `La concentración de potasio en la tierra es mayor a la esperada. Proporcione menor cantidad para alcanzar un máximo de ${minMaxData.Items[7]["max"]} kg/ha.`
+            resultObject["nitrates"] = `La concentración de potasio en la tierra es mayor a la esperada. Proporcione menor cantidad para alcanzar un máximo de ${minMaxData.Items[7]["max"]} ppm.`
         }
 
         statusCode = 200;
