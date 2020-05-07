@@ -19,13 +19,13 @@ window.addEventListener('load', () => {
     ctx = document.getElementById('luxChart').getContext('2d');
     createChart(ctx, "Iluminación (LUX)", dataLux);
     ctx = document.getElementById('potassiumChart').getContext('2d');
-    createChart(ctx, "Potasio (mg/l)", dataPot);
+    createChart(ctx, "Potasio (kg/ha)", dataPot);
     ctx = document.getElementById('sodiumChart').getContext('2d');
-    createChart(ctx, "Sodio (mg/l)", dataSod);
+    createChart(ctx, "Sodio (kg/ha)", dataSod);
     ctx = document.getElementById('calciumChart').getContext('2d');
-    createChart(ctx, "Calcio (mg/l)", dataCal);
+    createChart(ctx, "Calcio (kg/ha)", dataCal);
     ctx = document.getElementById('nitratesChart').getContext('2d');
-    createChart(ctx, "Nitratos (mg/l)", dataNitr);
+    createChart(ctx, "Nitratos (kg/ha)", dataNitr);
 
 });
 
@@ -124,10 +124,10 @@ function loadMinerals() {
             averageCal = countCal / result.length;
             averageNitr = countNitr / result.length;
             // Display elements
-            document.getElementById('avgPot').innerHTML = averagePot.toFixed(2) + " mg/l";
-            document.getElementById('avgSod').innerHTML = averageSod.toFixed(2) + " mg/l";
-            document.getElementById('avgCal').innerHTML = averageCal.toFixed(2) + " mg/l";
-            document.getElementById('avgNitr').innerHTML = averageNitr.toFixed(2) + " mg/l";
+            document.getElementById('avgPot').innerHTML = averagePot.toFixed(2) + " kg/ha";
+            document.getElementById('avgSod').innerHTML = averageSod.toFixed(2) + " kg/ha";
+            document.getElementById('avgCal').innerHTML = averageCal.toFixed(2) + " kg/ha";
+            document.getElementById('avgNitr').innerHTML = averageNitr.toFixed(2) + " kg/ha";
         },
         error: function (error) {
             console.log("ERROR:" + JSON.stringify(error));

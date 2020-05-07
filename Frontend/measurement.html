@@ -15,7 +15,7 @@
     <script src="./scripts/functions.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
     <script>
-        window.addEventListener("load",function() {
+        window.addEventListener("load", function () {
             let token = document.cookie.split("=")[1];
             verify(token);
         });
@@ -50,6 +50,8 @@
                 Inicio</a>
             <a href="./devices.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-microchip fa-fw"></i> 
                 Dispositivos</a>
+            <a href="./alerts.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-exclamation-triangle"></i> 
+                Alertas</a>
             <a href="./settings.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i> 
                 Configuración</a><br><br>
             <a href="./index.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-close"></i> 
@@ -72,7 +74,7 @@
             </header>
             <div class="w3-container">
                 <h2>Promedios</h2>
-                <div class="w3-row-padding w3-margin-bottom"  style="text-align: center;">
+                <div class="w3-row-padding w3-margin-bottom" style="text-align: center;">
                     <div class="w3-quarter">
                         <p>Temperatura promedio</p>
                         <div class="w3-grey">
@@ -98,36 +100,36 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class="w3-row-padding w3-margin-bottom"  style="text-align: center;">
+
+                <div class="w3-row-padding w3-margin-bottom" style="text-align: center;">
                     <div class="w3-quarter">
                         <p>Potasio promedio</p>
                         <div class="w3-grey">
-                            <div class="w3-container w3-center w3-padding w3-green" id="avgPot">20 mg/l</div>
+                            <div class="w3-container w3-center w3-padding w3-green" id="avgPot">20 kg/ha</div>
                         </div>
                     </div>
                     <div class="w3-quarter">
                         <p>Sodio promedio</p>
                         <div class="w3-grey">
-                            <div class="w3-container w3-center w3-padding w3-light-green" id="avgSod">15 mg/l</div>
+                            <div class="w3-container w3-center w3-padding w3-light-green" id="avgSod">15 kg/ha</div>
                         </div>
                     </div>
                     <div class="w3-quarter">
                         <p>Calcio promedio</p>
                         <div class="w3-grey">
-                            <div class="w3-container w3-center w3-padding w3-bluish-green" id="avgCal">10 mg/l</div>
+                            <div class="w3-container w3-center w3-padding w3-bluish-green" id="avgCal">10 kg/ha</div>
                         </div>
                     </div>
                     <div class="w3-quarter">
                         <p>Nitratos promedio</p>
                         <div class="w3-grey">
-                            <div class="w3-container w3-center w3-padding w3-brown" id="avgNitr">50 mg/l</div>
+                            <div class="w3-container w3-center w3-padding w3-brown" id="avgNitr">50 kg/ha</div>
                         </div>
                     </div>
                 </div>
-                <h2>Medición de minerales</h2>
+                <h2 class="w3-section">Medición de minerales</h2>
                 <a href="./manual-measurement.html"><button class="w3-button w3-black">Agregar una medición manual <i
-                    class="fa fa-arrow-right"></i></button></a>
+                            class="fa fa-arrow-right"></i></button></a>
             </div>
             <hr>
 
@@ -155,6 +157,8 @@
                         <p><a href="./devices.html" class="w3-button">Dispositivos</a></p>
                         <p>
                             <a href="./measurement.html" class="w3-button">Mediciones</a></p>
+                        <p>
+                            <a href="./alerts.html" class="w3-bar-item w3-button w3-padding">Alertas</a></p>
                         <p>
                             <a href="./settings.html" class="w3-button">Configuración</a></p>
                     </div>

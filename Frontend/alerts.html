@@ -2,23 +2,25 @@
 <html>
 
 <head>
-    <title>SENSEIoT | Configuración</title>
+    <title>SENSEIoT | Dispositivos</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
     <link rel="stylesheet" href="./styles/general.css">
     <script src="./scripts/menu.js"></script>
     <script src="./scripts/functions.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+
     <script>
-        window.addEventListener("load",function() {
-            let token = document.cookie.split("=")[1];
+        window.addEventListener("load",function(){
+            let token = document.cookie.split("=")[1]
             verify(token);
-        });
+            loadAlerts();
+        })
     </script>
+
 </head>
 
 <body class="w3-light-grey">
@@ -51,8 +53,8 @@
                 Dispositivos</a>
             <a href="./measurement.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i> 
                 Mediciones</a>
-            <a href="./alerts.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-exclamation-triangle"></i> 
-                Alertas</a><br><br>
+            <a href="./settings.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i> 
+                Configuración</a><br><br>
             <a href="./index.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-close"></i> 
                 Cerrar sesión</a><br><br>
         </div>
@@ -69,36 +71,69 @@
         <div class="content-wrapper">
             <!-- Header -->
             <header class="w3-container" style="padding-top:22px">
-                <h1><b><i class="fa fa-cog"></i> Configuración</b></h1>
+                <h1><b><i class="fa fa-exclamation-triangle"></i> Alertas</b></h1>
             </header>
+
+            
+
             <div class="w3-container">
-                <h2>Cambiar contraseña</h5>
-                <div class="w3-row-padding w3-margin-bottom">
-                    <form action="#" class="w3-container w3-card-4 w3-light-grey w3-margin">
-                        <div class="w3-row w3-section">
-                            <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-key"></i></div>
-                            <div class="w3-rest">
-                                <input class="w3-input w3-border" name="oldPassword" type="password"
-                                    placeholder="Contraseña anterior">
-                            </div>
-                        </div>
+                <h2 class="w3-section">Mínimos y máximos de alerta</h2>
+            <a href="./manual-mineral-MinMax.html"><button class="w3-button w3-black">Asignar mínimos y máximos de
+                    cada medición
+                    <i class="fa fa-arrow-right"></i></button></a>
+            </div>
+            
+            <div class="w3-container">
+                <h2 class="w3-section">Reporte de alertas</h2>
+                <p>Alertas sugeridas de acuerdo con las últimas mediciones registradas.</p>
+            </div>
 
-
-                        <div class="w3-row w3-section">
-                            <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-lock"></i></div>
-                            <div class="w3-rest">
-                                <input class="w3-input w3-border" name="newPassword" type="password"
-                                    placeholder="Nueva contraseña">
-                            </div>
-                        </div>
-
-                        <button class="w3-button w3-block w3-section w3-green w3-ripple w3-padding"><a href="#">Cambiar
-                                contraseña</a></button>
-                    </form>
-                </div>
+            <div class="w3-responsive" style="margin:20px">
+                <table class="w3-table-all w3-hoverable w3-card-4">
+                    <thead>
+                        <tr>
+                            <th scope="col">Medición</th>
+                            <th scope="col">Alertas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Temperatura</td>
+                            <td id="tmpAlert"></td>
+                        </tr>
+                        <tr>
+                            <td>Humedad</td>
+                            <td id="humAlert"></td>
+                        </tr>
+                        <tr>
+                            <td>Conductividad</td>
+                            <td id="conAlert"></td>
+                        </tr>
+                        <tr>
+                            <td>Iluminación</td>
+                            <td id="luxAlert"></td>
+                        </tr>
+                        <tr>
+                            <td>Potasio</td>
+                            <td id="potAlert"></td>
+                        </tr>
+                        <tr>
+                            <td>Sodio</td>
+                            <td id="sodAlert"></td>
+                        </tr>
+                        <tr>
+                            <td>Calcio</td>
+                            <td id="calAlert"></td>
+                        </tr>
+                        <tr>
+                            <td>Nitratos</td>
+                            <td id="nitAlert"></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-
+        
         <!-- Footer -->
         <footer class="w3-light-grey">
             <div class="w3-container w3-black w3-padding-32">
@@ -122,6 +157,8 @@
         </footer>
 
         <!-- End page content -->
+    </div>
+
 </body>
 
 </html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SENSEIoT | Medición Manual</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <link rel="stylesheet" href="./styles/general.css">
+    <script src="./scripts/menu.js"></script>
+    <script src="./scripts/functions.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <script>
+        window.addEventListener("load", function () {
+            let token = document.cookie.split("=")[1];
+            verify(token);
+            loadMinMax();
+        });
+    </script>
+</head>
+
+<body class="w3-light-grey">
+
+    <!-- Top container -->
+    <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
+        <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey"
+            onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+        <span class="w3-bar-item w3-right"><img src="./images/SenseIoT logo.png" alt="SENSEIoT"
+                style="width: 50px;"></span>
+    </div>
+
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-collapse w3-black w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+        <div class="w3-container w3-row">
+            <div class="w3-col s4"><i class=" w3-center fa fa-user fa-fw" style="font-size: 24px;"></i>
+            </div>
+            <div class="w3-col s8 w3-bar">
+                <span>Bienvenido, <strong>Usuario</strong></span><br>
+            </div>
+        </div>
+        <hr>
+        <div class="w3-container">
+            <h5>Menú Principal</h5>
+        </div>
+        <div class="w3-bar-block">
+            <a href="./dashboard.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-dashboard fa-fw"></i> 
+                Inicio</a>
+            <a href="./devices.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-microchip fa-fw"></i> 
+                Dispositivos</a>
+            <a href="./alerts.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-exclamation-triangle"></i> 
+                Alertas</a>
+            <a href="./settings.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i> 
+                Configuración</a><br><br>
+            <a href="./index.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-close"></i> 
+                Cerrar sesión</a><br><br>
+        </div>
+    </nav>
+
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer"
+        title="close side menu" id="myOverlay"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:300px; margin-top:43px;">
+
+        <div class="content-wrapper">
+            <!-- Header -->
+            <header class="w3-container" style="padding-top:22px">
+                <p style=" font-size: 30px; text-align: left;margin: 0 10px;"><a href="./alerts.html"><i
+                            class="fa fa-arrow-left"></i></a></p>
+                <h1 style="text-align: center;"><b> Agregar mediciones de mínimos y máximos</b></h1>
+            </header>
+            <div class="w3-container">
+                <div class="w3-row-padding w3-margin-bottom">
+                    <form action="javascript:void(0);" class="w3-container w3-light-grey w3-margin"
+                        onsubmit="manualMinMax()">
+
+                        <table class="w3-table-all w3-hoverable w3-card-4">
+                            <thead>
+                                <th>Valor</th>
+                                <th>Mínimo</th>
+                                <th>Máximo</th>
+                            </thead>
+                            <tr>
+                                <th>Temperatura (°C)</th>
+                                <td>
+                                    <input class="w3-input w3-border" name="temperatureMin" type="number" id="minTemp"
+                                        placeholder="Medición de temperatura mínima (°C)" required></td>
+                                <td>
+                                    <input class="w3-input w3-border" name="temperatureMax" type="number" id="maxTemp"
+                                        placeholder="Medición de temperatura máxima (°C)" required></td>
+                            </tr>
+                            <tr>
+                                <th>Humedad (S/cm)</th>
+                                <td>
+                                    <input class="w3-input w3-border" name="humidityMin" type="number" id="minHum"
+                                        placeholder="Medición de humedad mínima (%)" required></td>
+                                <td>
+                                    <input class="w3-input w3-border" name="humidityMax" type="number" id="maxHum"
+                                        placeholder="Medición de humedad máxima (%)" required></td>
+                            </tr>
+                            <tr>
+                                <th>Conductividad (S/cm)</th>
+                                <td>
+                                    <input class="w3-input w3-border" name="conductivityMin" type="number" id="minCon"
+                                        placeholder="Medición de conductividad mínima (S/cm)" required></td>
+                                <td>
+                                    <input class="w3-input w3-border" name="conductivityMax" type="number" id="maxCon"
+                                        placeholder="Medición de conductividad máxima (S/cm)" required></td>
+                            </tr>
+                            <tr>
+                                <th>Iluminación (LUX)</th>
+                                <td>
+                                    <input class="w3-input w3-border" name="luxMin" type="number" id="minLux"
+                                        placeholder="Medición de luminosidad mínima (LUX)" required></td>
+                                <td>
+                                    <input class="w3-input w3-border" name="luxMax" type="number" id="maxLux"
+                                        placeholder="Medición de luminosidad máxima (LUX)" required></td>
+                            </tr>
+                            <tr>
+                                <th>Potasio (kg/ha)</th>
+                                <td>
+                                    <input class="w3-input w3-border" name="potassiumMin" type="number" id="minPot"
+                                        placeholder="Medición de potasio mínima (kg/ha)" required></td>
+                                <td>
+                                    <input class="w3-input w3-border" name="potassiumMax" type="number" id="maxPot"
+                                        placeholder="Medición de potasio máxima (kg/ha)" required></td>
+                            </tr>
+                            <tr>
+                                <th>Sodio (kg/ha)</th>
+                                <td>
+                                    <input class="w3-input w3-border" name="sodiumMin" type="number" id="minSod"
+                                        placeholder="Medición de sodio mínima (kg/ha)" required></td>
+                                <td>
+                                    <input class="w3-input w3-border" name="sodiumMax" type="number" id="maxSod"
+                                        placeholder="Medición de sodio máxima (kg/ha)" required></td>
+                            </tr>
+                            <tr>
+                                <th>Calcio (kg/ha)</th>
+                                <td>
+                                    <input class="w3-input w3-border" name="calciumMin" type="number" id="minCal"
+                                        placeholder="Medición de calcio mínima (kg/ha)" required></td>
+                                <td>
+                                    <input class="w3-input w3-border" name="calciumMax" type="number" id="maxCal"
+                                        placeholder="Medición de calcio máxima (kg/ha)" required></td>
+                            </tr>
+                            <tr>
+                                <th>Nitratos (kg/ha)</th>
+                                <td>
+                                    <input class="w3-input w3-border" name="nitratesMin" type="number" id="minNit"
+                                        placeholder="Medición de nitratos mínima (kg/ha)" required></td>
+                                <td>
+                                    <input class="w3-input w3-border" name="nitratesMax" type="number" id="maxNit"
+                                        placeholder="Medición de nitratos máxima (kg/ha)" required></td>
+                            </tr>
+                        </table>
+
+                        <input type="submit" class="w3-button w3-block w3-section w3-green w3-ripple w3-padding"
+                            value="Guardar registro">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="w3-light-grey">
+            <div class="w3-container w3-black w3-padding-32">
+                <div class="w3-row">
+                    <div class="w3-container w3-half">
+                        <h5 class="w3-center w3-bottombar w3-border-green">Enlaces</h5>
+                        <p><a href="./devices.html" class="w3-button">Dispositivos</a></p>
+                        <p>
+                            <a href="./measurement.html" class="w3-button">Mediciones</a></p>
+                        <p>
+                            <a href="./alerts.html" class="w3-bar-item w3-button w3-padding">Alertas</a></p>
+                        <p>
+                            <a href="./settings.html" class="w3-button">Configuración</a></p>
+                    </div>
+                    <div class="w3-container w3-half">
+                        <h5 class="w3-center w3-bottombar w3-border-green">Información</h5>
+                        <p class="w3">Creado por equipo SENSIoT</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- End page content -->
+
+</body>
+
+</html>

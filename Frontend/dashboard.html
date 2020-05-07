@@ -19,6 +19,7 @@
             let token = document.cookie.split("=")[1];
             verify(token);
             loadAverages();
+            alertCount();
         })
     </script>
 
@@ -52,6 +53,8 @@
                 Dispositivos</a>
             <a href="./measurement.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i> 
                 Mediciones</a>
+            <a href="./alerts.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-exclamation-triangle"></i> 
+                Alertas</a>
             <a href="./settings.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i> 
                 Configuración</a><br><br>
             <a href="./index.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-close"></i> 
@@ -140,11 +143,22 @@
             <hr>
 
             <div class="w3-container">
-                <h2>Dispositivos</h2>
+                <h2>Alertas</h2>
                 <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
                     <tr>
-                        <td>NodeMCU</td>
-                        <td><i class="fa fa-battery w3-margin-right"></i>65%</td>
+                        <td class="w3-col s10">Alertas por atender</td>
+                        <td class="w3-col s2"><i class="fa fa-exclamation-triangle w3-margin-right"></i> <span id="alertCount"></span></td>
+                    </tr>
+                </table><br>
+                <a href="./alerts.html"><button class="w3-button w3-black">Ir a mis alertas  <i
+                            class="fa fa-arrow-right"></i></button></a>
+            </div>
+            <div class="w3-container">
+                <br><h2>Dispositivos</h2>
+                <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
+                    <tr>
+                        <td class="w3-col s10">NodeMCU</td>
+                        <td class="w3-col s2"><i class="fa fa-battery w3-margin-right"></i>65%</td>
                     </tr>
                 </table><br>
                 <a href="./devices.html"><button class="w3-button w3-black">Todos los dispositivos  <i
@@ -179,6 +193,8 @@
                         <p><a href="./devices.html" class="w3-button">Dispositivos</a></p>
                         <p>
                             <a href="./measurement.html" class="w3-button">Mediciones</a></p>
+                        <p>
+                            <a href="./alerts.html" class="w3-bar-item w3-button w3-padding">Alertas</a></p>
                         <p>
                             <a href="./settings.html" class="w3-button">Configuración</a></p>
                     </div>

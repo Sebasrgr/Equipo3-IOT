@@ -58,3 +58,19 @@ div.content-wrapper {
         max-width: 100% !important;
     }
 }
+
+#minTemp, #maxTemp, #minHum, #maxHum, #minPot, #maxPot,
+#minCon, #maxCon, #minLux, #maxLux, #minSod, #maxSod, #minCal, #maxCal, #minNit, #maxNit{
+    width: 49%;
+    float: left;
+}
+
+#minTemp, #minHum, #minCon, #minLux, #minPot, #minSod, #minCal, #minNit{
+    margin-right: 1em;
+}
+
+.table{
+    padding-left: 2em;
+    width: 30%;
+    text-align: left;
+}
